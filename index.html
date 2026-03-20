@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wither shaxsiy sayt</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="loader">
+    <div class="loader-ring"></div>
+    <h1>WITHER KIBR</h1>
+    <p>Initializing cyber exchange system...</p>
+  </div>
+
+  <div class="particles"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-dot"></span>
+      <h2>WITHER KIBR</h2>
+    </div>
+
+    <nav class="top-actions">
+      <select id="languageSelect" class="small-control">
+        <option value="en">EN</option>
+        <option value="uz">UZ</option>
+        <option value="ru">RU</option>
+      </select>
+
+      <button id="themeToggle" class="small-btn">Theme</button>
+      <button id="proModeToggle" class="small-btn">Pro Mode</button>
+      <button id="soundToggle" class="small-btn">Sound: Off</button>
+      <button id="logoutBtn" class="small-btn hidden">Logout</button>
+    </nav>
+  </header>
+
+  <main class="main-container hidden" id="appContainer">
+    <section class="hero glass">
+      <div class="hero-text">
+        <p class="eyebrow">CYBER EXCHANGE SYSTEM</p>
+        <h1 id="heroTitle"> Currency Dashboard</h1>
+        <p id="heroSubtitle">
+          Premium dark exchange platform with live-style rates, fast conversion,
+          analytics, favorites, and history.
+        </p>
+        <a href="#converterSection" class="hero-btn" id="startBtn">Start Converting</a>
+      </div>
+      <div class="hero-side">
+        <div class="hero-card">
+          <span>USD / UZS</span>
+          <strong id="heroRate">12,650.00</strong>
+          <small class="up">+0.52%</small>
+        </div>
+        <div class="hero-card">
+          <span>EUR / UZS</span>
+          <strong id="heroRate2">13,720.00</strong>
+          <small class="down">-0.18%</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="authSection" class="grid-two">
+      <div class="glass auth-card">
+        <h2 id="loginTitle">Login</h2>
+        <form id="loginForm">
+          <input type="text" id="loginUsername" placeholder="Username" required />
+          <input type="password" id="loginPassword" placeholder="Password" required />
+          <button type="submit" class="primary-btn" id="loginBtn">Login</button>
+        </form>
+      </div>
+
+      <div class="glass auth-card">
+        <h2 id="registerTitle">Register</h2>
+        <form id="registerForm">
+          <input type="text" id="registerUsername" placeholder="Username" required />
+          <input type="password" id="registerPassword" placeholder="Password" required />
+          <button type="submit" class="primary-btn" id="registerBtn">Create Account</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="dashboardContent" class="hidden">
+      <section id="converterSection" class="glass section-card">
+        <div class="section-head">
+          <h2 id="converterTitle">Currency Converter</h2>
+          <p id="lastUpdated">Last updated: --</p>
+        </div>
+
+        <div class="converter-layout">
+          <div class="converter-box">
+            <label id="amountLabel" for="amount">Amount</label>
+            <input type="number" id="amount" value="1" min="0" step="0.01" />
+
+            <div class="converter-row">
+              <div class="field">
+                <label id="fromLabel" for="fromCurrency">From</label>
+                <select id="fromCurrency"></select>
+              </div>
+
+              <button id="swapBtn" class="swap-btn" title="Swap">⇄</button>
+
+              <div class="field">
+                <label id="toLabel" for="toCurrency">To</label>
+                <select id="toCurrency"></select>
+              </div>
+            </div>
+
+            <div class="action-row">
+              <button id="convertBtn" class="primary-btn">Convert</button>
+              <button id="copyBtn" class="secondary-btn">Copy</button>
+              <button id="resetBtn" class="secondary-btn">Reset</button>
+            </div>
+
+            <div class="result-box">
+              <p id="resultText">1 USD = 12,650.00 UZS</p>
+            </div>
+          </div>
+
+          <div class="converter-side">
+            <div class="glass mini-card">
+              <h3 id="favoritesTitle">Favorites</h3>
+              <input type="text" id="currencySearch" placeholder="Search currency..." />
+              <div id="favoritesList" class="favorites-list"></div>
+              <div id="searchResults" class="search-results"></div>
+            </div>
+
+            <div class="glass mini-card">
+              <h3 id="historyTitle">History</h3>
+              <div id="historyList" class="history-list"></div>
+              <button id="clearHistoryBtn" class="secondary-btn full-btn">Clear History</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="glass section-card">
+        <div class="section-head">
+          <h2 id="ratesTitle">Exchange Rates Dashboard</h2>
+        </div>
+        <div id="ratesGrid" class="rates-grid skeleton"></div>
+      </section>
+
+      <section class="glass section-card">
+        <div class="section-head">
+          <h2 id="popularTitle">Popular Conversions</h2>
+        </div>
+        <div id="popularGrid" class="popular-grid"></div>
+      </section>
+
+      <section class="glass section-card">
+        <div class="section-head">
+          <h2 id="analyticsTitle">Mini Analytics</h2>
+        </div>
+        <div class="chart-wrap">
+          <canvas id="trendChart" width="900" height="280"></canvas>
+        </div>
+      </section>
+
+      <section class="glass section-card">
+        <div class="section-head">
+          <h2 id="faqTitle">FAQ</h2>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Are rates real?</button>
+          <div class="faq-answer">
+            <p>This demo uses structured mock data prepared for easy real API integration later.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Does it save history?</button>
+          <div class="faq-answer">
+            <p>Yes, the last conversions are stored in localStorage in your browser.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Can I add live API later?</button>
+          <div class="faq-answer">
+            <p>Yes, the JavaScript is already structured so you can replace mock data with real fetch calls.</p>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <div id="toast" class="toast">Done</div>
+
+  <footer class="footer hidden" id="footer">
+    <p>AkaiRate © 2026 - Anime Cyber Exchange Interface</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
